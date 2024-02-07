@@ -1,0 +1,127 @@
+:root {
+    --color-white: #F8F4F1;
+    --color-gray: #9C94AC;
+    --lebar-border: 2px;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+}
+
+main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-image: linear-gradient(to bottom, #0F090B, #130718);
+    color: var(--color-white);
+    padding: 20px;
+    display: grid;
+    gap: 10px;
+    width: 15em;
+    position: relative;
+    --border: 2px;
+    color: #FFF;
+    background-clip: padding-box;
+    border: solid var(--border) transparent;
+    border-radius: 1em;
+
+    &:before {
+        content: '';
+        z-index: 99999;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        margin: calc(-1 * var(--border));
+        border-radius: inherit;
+        background: linear-gradient(to bottom, #B0845D, #100B06);
+    }
+}
+
+.card p {
+    color: var(--color-gray);
+}
+
+.card h1 {
+    font-size: medium;
+}
+
+.card hr {
+    border-color: #3C2D33;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.card .button {
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid #302830;
+    border-radius: 50px;
+    color: var(--color-white);
+    background-color: #27202B;
+    padding: 10px 0;
+}
+
+.shopsys {
+    margin-top: 2em;
+    background-color: transparent;
+    border-radius: 50px;
+    color: #9A91A4;
+    text-align: center;
+    padding: 12px 20px;
+    border: 2px solid #9A91A4;
+}
+
+.items {
+    display: flex;
+    gap: 1em;
+    margin-top: 5em;
+}
+
+.item {
+    display: grid;
+    gap: 5px;
+    color: #787573;
+    text-align: center;
+    font-size: 120%;
+}
+
+.item-img {
+    background-color: #352831;
+    padding: 10px;
+    position: relative;
+    --border: 2px;
+    color: #FFF;
+    background-clip: padding-box;
+    border: solid var(--border) transparent;
+    border-radius: 100%;
+
+    &:before {
+        content: '';
+        z-index: 99999;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        margin: calc(-1 * var(--border));
+        border-radius: inherit;
+        background: linear-gradient(to bottom, #796452, #3A2D22);
+    }
+}

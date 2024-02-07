@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connected Rope</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      .rope-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #ccc;
+        position: absolute;
+      }
+
+      svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rope-container">
+      <div class="box" style="top: 100px; left: 100px">Div 1</div>
+      <div class="box" style="top: 300px; left: 300px">Div 2</div>
+      <div class="box" style="top: 200px; left: 500px">Div 3</div>
+      <!-- Add more boxes here if needed -->
+      <svg id="rope"></svg>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const boxes = document.querySelectorAll(".box");
+        const rope = document.getElementById("rope");
+
+        const drawRope = () => {
+          const rect1 = boxes[0].getBoundingClientRect();
+          const rect2 = boxes[1].getBoundingClientRect();
+          const rect3 = boxes[2].getBoundingClientRect();
+
+          const x1 = rect1.left + rect1.width / 2;
+          const y1 = rect1.top + rect1.height / 2;
+          const x2 = rect2.left + rect2.width / 2;
+          const y2 = rect2.top + rect2.height / 2;
+          const x3 = rect3.left + rect3.width / 2;
+          const y3 = rect3.top + rect3.height / 2;
+
+          const path1 = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path"
+          );
+          path1.setAttribute(
+            "d",
+            `M${x1},${y1} Q${x2},${(y1 + y2) / 2} ${x2},${y2}`
+          );
+          path1.setAttribute("fill", "none");
+          path1.setAttribute("stroke", "brown");
+          path1.setAttribute("stroke-width", "4");
+
+          const path2 = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path"
+          );
+          path2.setAttribute(
+            "d",
+            `M${x3},${y3} Q${x1},${(y1 + y3) / 2} ${x1},${y1}`
+          );
+          path2.setAttribute("fill", "none");
+          path2.setAttribute("stroke", "brown");
+          path2.setAttribute("stroke-width", "4");
+
+          rope.appendChild(path1);
+          rope.appendChild(path2);
+        };
+
+        drawRope();
+      });
+    </script>
+  </body>
+</html>
